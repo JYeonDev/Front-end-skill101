@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    .line {
+      position: absolute;
+      background-color: white;
+    }
+
+    .horizontal {
+      width: 100%;
+      height: 1px;
+      top: 50%;
+    }
+
+    .vertical {
+      height: 100%;
+      width: 1px;
+      left: 50%;
+    }
+
+    .target {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .tag {
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 38px;
+      transform: translate(20px, 20px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="line horizontal"></div>
+  <div class="line vertical"></div>
+  <img src="/img/target.png" alt="target" class="target">
+  <span class="tag"></span>
+
+  <script>
+    const VERTICAL = document.querySelector('.vertical')
+    const HORIZONTAL = document.querySelector('.horizontal')
+    const TARGET = document.querySelector('.target')
+    const TAG = document.querySelector('.tag')
+
+    document.addEventListener('mousemove', (event) => {
+      const x = event.clientX
+      const y = event.clientY
+
+      VERTICAL.style.left = `${x}px`
+      HORIZONTAL.style.top = `${y}px`
+      TARGET.style.left = `${x}px`
+      TARGET.style.top = `${y}px`
+      TAG.style.left = `${x}px`
+      TAG.style.top = `${y}px`
+      TAG.innerHTML = `${x}px, ${y}px`
+    })
+  </script>
+</body>
+
+</html>
