@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shooting Game</title>
+  <style>
+    body {
+      background-color: gray;
+      margin: 0;
+    }
+
+    .line {
+      position: absolute;
+      background-color: white;
+    }
+
+    .horizontal {
+      width: 100%;
+      height: 1px;
+
+    }
+
+    .vertical {
+      height: 100%;
+      width: 1px;
+
+    }
+
+    .target {
+      position: absolute;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .bug {
+      display: none;
+    }
+
+    .carrot {
+      display: none;
+    }
+
+    .score {
+      text-align: center;
+      line-height: 100px;
+      height: 100px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .tag {
+      color: white;
+      position: absolute;
+      margin: 20px;
+      font-size: 38px;
+      transform: translate(20px, 20px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="line horizontal"></div>
+  <div class="line vertical"></div>
+  <img src="/img/target.png" alt="target" class="target">
+  <img src="/img/bug.png" alt="bug" class="bug">
+  <img src="/img/carrot.png" alt="carrot" class="carrot">
+  <div class="score">SCORE : </div>
+  <span class="tag"></span>
+
+  <script>
+    const HORIZONTAL = document.querySelector('.horizontal')
+    const VERTICAL = document.querySelector('.vertical')
+    const TARGET = document.querySelector('.target')
+    const TAG = document.querySelector('.tag')
+    const BUG = document.querySelector('.bug')
+    const CARROT = document.querySelector('.carrot')
+    const SCORE = document.querySelector('.score')
+
+    addEventListener('load', () => {
+      const targetRect = TARGET.getBoundingClientRect()
+      const targetHalfWidth = targetRect.width / 2
+      const targetHalfHeight = targetRect.height / 2
+
+      document.addEventListener('mousemove', (event) => {
+        const x = event.clientX
+        const y = event.clientY
+
+        VERTICAL.style.transform = `translateX(${x}px)`
+        HORIZONTAL.style.transform = `translateY(${y}px)`
+        TARGET.style.transform = `translate(${x - targetHalfWidth}px, ${y - targetHalfHeight}px)`
+        TAG.style.transform = `translate(${x}px, ${y}px)`
+        TAG.innerHTML = `${x}px, ${y}px`
+      })
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>
