@@ -52,6 +52,17 @@
       color: #fff;
     }
 
+    .start {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 60px;
+      font-size: 24px;
+      border-radius: 5px;
+    }
+
     .tag {
       color: white;
       position: absolute;
@@ -69,6 +80,7 @@
   <img src="/img/bug.png" alt="bug" class="bug">
   <img src="/img/carrot.png" alt="carrot" class="carrot">
   <div class="score">SCORE : </div>
+  <button class="start">START</button>
   <span class="tag"></span>
 
   <script>
@@ -97,7 +109,9 @@
       })
     })
 
+    let randomPosition = () => {
 
+    }
 
 
   </script>
